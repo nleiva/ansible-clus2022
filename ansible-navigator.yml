@@ -1,0 +1,28 @@
+ansible-navigator:
+
+  editor:
+    command: code -g {filename}:{line_number}
+    console: false
+
+  app: run
+
+  execution-environment:
+    container-engine: podman
+    enabled: true
+    environment-variables:
+      pass:
+        - TOWER_HOST
+        - TOWER_VERIFY_SSL
+        - TOWER_OAUTH_TOKEN
+        - TOWER_PASSWORD
+        - TOWER_USERNAME
+        - TOWER_FORMAT
+    image: quay.io/redhat_emp1/ee-controller-image
+    pull:
+      policy: missing
+
+  logging:
+    level: debug
+
+  playbook-artifact:
+    enable: false
